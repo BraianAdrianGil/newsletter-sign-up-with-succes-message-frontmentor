@@ -1,0 +1,268 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  min-height: 100vh;
+  position: relative;
+}
+
+.card__img__container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card__img__container img {
+  max-width: 100%;
+}
+
+.card__content__container {
+  margin-top: 0.8rem;
+  padding: 15px;
+}
+
+.card__content__container h1 {
+  margin-bottom: 0.8rem;
+  color: var(--Dark-slate-grey);
+}
+
+.card__content__container p {
+  margin-bottom: 0.8rem;
+  font-size: 14px;
+  color: var(--Charcoal-grey);
+}
+
+.list__items__container {
+  margin-top: 0.8rem;
+}
+
+.list__items__container li {
+  width: 100%;
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.4rem;
+  font-size: 14px;
+  color: var(--Charcoal-grey);
+}
+
+.list__items__container li img {
+  max-width: 16px;
+  align-self: flex-start;
+}
+
+form {
+  margin-top: 1.5rem;
+  margin-bottom: 0.8rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  text-wrap: balance;
+}
+
+.form__input__container {
+  width: 100%;
+  max-width: 250px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.form__input__container label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--Dark-slate-grey);
+  margin-bottom: 0.15rem;
+}
+
+.form__input__container input {
+  height: 38px;
+  border-radius: 5px;
+  border: 1px solid var(--Grey);
+  outline: none;
+  padding-left: 0.25rem;
+}
+
+.form__input__container input::placeholder {
+  padding-left: 0.25rem;
+}
+
+.form__button__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 250px;
+}
+
+.form__button__container button {
+  width: 100%;
+  height: 38px;
+  background: var(--Dark-slate-grey);
+  color: var(--White);
+  border: none;
+  border-radius: 7px;
+  font-weight: 700;
+  font-size: 12px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.form__button__container button:hover {
+  background: var(--tomato);
+  transition: 0.5s;
+}
+
+.input__error__message__container {
+  position: absolute;
+  padding: 5px;
+  border-radius: 5px;
+  top: -12%;
+  right: -2%;
+}
+
+.input__error__message__container p {
+  color: var(--tomato);
+  font-size: 13px;
+}
+
+.form__message__general__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background: var(--White);
+  padding: 15px;
+  border-radius: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 4px 4px 10px black;
+  width: 270px;
+  opacity: 1;
+  visibility: visible;
+  transition: 2s;
+}
+
+.form__message__img__container {
+  display: flex;
+  border-radius: 50%;
+  align-self: flex-start;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 6px 4px 8px rgba(0, 0, 0, 0.451);
+}
+
+.form__message__img__container img {
+  width: 35px;
+  aspect-ratio: 1;
+}
+
+.form__message__general__container h2 {
+  margin-top: 0.8rem;
+  font-size: 22px;
+}
+
+.form__message__general__container p {
+  margin-top: 0.8rem;
+  font-size: 13px;
+}
+
+.form__message__close__btn__container {
+  margin-top: 0.8rem;
+  margin-bottom: 0.8rem;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.form__message__close__btn__container button {
+  width: 100%;
+  border-radius: 5px;
+  height: 35px;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.5s;
+  font-size: 0.75rem;
+  background: var(--Dark-slate-grey);
+  color: var(--White);
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.649);
+}
+
+.form__message__close__btn__container button:hover {
+  background: var(--tomato);
+  color: var(--White);
+  transition: 0.5s;
+}
+
+.form__message__general__container.false {
+  opacity: 0;
+  visibility: hidden;
+  transition: 2s;
+}
+
+@media screen and (min-width: 609px) {
+  .card {
+    padding: 10px;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: flex-start;
+    justify-content: center;
+    min-height: unset;
+    position: relative;
+    margin: 0.5rem;
+    background: var(--White);
+    border-radius: 15px;
+    max-width: 650px;
+    height: 400px;
+    gap: 1rem;
+  }
+
+  .card__img__container {
+    width: 50%;
+    height: 100%;
+  }
+
+  .card__img__container img {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+    border-radius: 15px;
+  }
+
+  .card__content__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    height: 95%;
+    margin: 0;
+    padding: 0;
+    margin-left: 1rem;
+    margin-top: 1.5rem;
+    max-width: 320px;
+  }
+
+  .list__items__container li {
+    font-size: 0.85rem;
+  }
+
+  form {
+    align-items: flex-start;
+  }
+
+  .form__input__container {
+    max-width: 100%;
+  }
+
+  .form__button__container {
+    max-width: 100%;
+  }
+}

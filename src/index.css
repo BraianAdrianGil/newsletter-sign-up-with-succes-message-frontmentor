@@ -1,0 +1,43 @@
+/* General styles =============================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+}
+
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+/* Custom styles ================================= */
+:root {
+  /* Primary color*/
+  --tomato: hsl(4, 100%, 67%);
+
+  /* Neutral colors */
+  --Dark-slate-grey: hsl(234, 29%, 20%);
+  --Charcoal-grey: hsl(235, 18%, 26%);
+  --Grey: hsl(231, 7%, 60%);
+  --White: hsl(0, 0%, 100%);
+
+  /* Font */
+  --font: "Roboto", sans-serif;
+}
+
+body {
+  font-family: var(--font);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+@media screen and (min-width: 609px) {
+  body {
+    background: var(--Charcoal-grey);
+  }
+}
