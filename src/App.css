@@ -1,3 +1,12 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  min-height: 100vh;
+}
+
 .card {
   display: flex;
   flex-direction: column;
@@ -16,6 +25,9 @@
 
 .card__img__container img {
   max-width: 100%;
+  width: 100%;
+  max-height: 284px;
+  object-fit: cover;
 }
 
 .card__content__container {
@@ -208,6 +220,27 @@ form {
   transition: 2s;
 }
 
+.attribution {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+
+  padding: 10px;
+}
+
+.attribution p {
+  color: var(--Charcoal-grey);
+}
+
+.attribution p a {
+  color: var(--tomato);
+  font-weight: 700;
+  margin-left: 0.15rem;
+}
+
 @media screen and (min-width: 609px) {
   .card {
     padding: 10px;
@@ -221,17 +254,20 @@ form {
     background: var(--White);
     border-radius: 15px;
     max-width: 650px;
-    height: 400px;
+    height: 100%;
     gap: 1rem;
+    margin-top: auto;
   }
 
   .card__img__container {
     width: 50%;
     height: 100%;
+    min-height: 400px;
   }
 
   .card__img__container img {
     height: 100%;
+    min-height: 400px;
     object-fit: cover;
     width: 100%;
     border-radius: 15px;
@@ -264,5 +300,20 @@ form {
 
   .form__button__container {
     max-width: 100%;
+  }
+
+  .attribution {
+    margin-top: auto;
+  }
+
+  .attribution p {
+    color: var(--White);
+    font-weight: lighter;
+  }
+
+  .attribution p a {
+    color: var(--tomato);
+    font-weight: 700;
+    margin-left: 0.15rem;
   }
 }

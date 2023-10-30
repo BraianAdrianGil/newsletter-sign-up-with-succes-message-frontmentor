@@ -36,103 +36,117 @@ function App() {
 
   console.log(showSuccessfullyMessage);
   return (
-    <div className="card">
-      <div className="card__img__container">
-        <img src="/images/illustration-sign-up-mobile.svg" alt="" />
+    <div className="App">
+      <div className="card">
+        <div className="card__img__container">
+          <img src="/images/illustration-sign-up-mobile.svg" alt="" />
+        </div>
+
+        <div className="card__content__container">
+          <h1>Stay updated!</h1>
+          <p>Join 60,000+ product managers receiving monthly updates on:</p>
+
+          <ul className="list__items__container">
+            <li>
+              <img src="/images/icon-list.svg" alt="Check icon" />
+              Product discovery and building what matters
+            </li>
+            <li>
+              <img src="/images/icon-list.svg" alt="" /> Measuring to ensure
+              updates are a success
+            </li>
+            <li>
+              <img src="/images/icon-list.svg" alt="" /> And much more!
+            </li>
+          </ul>
+
+          <form onSubmit={handleSubmit}>
+            <div className="form__input__container">
+              <label htmlFor="email">Email address</label>
+              <input
+                id="email"
+                type="email"
+                aria-required
+                placeholder="email@company.com"
+                value={inputValue}
+                onChange={handleInputValue}
+                ref={inputRef}
+                autoComplete="true"
+                style={{ borderColor: errorMessage && "var(--tomato)" }}
+              />
+
+              {errorMessage ? (
+                <div className="input__error__message__container">
+                  <p>{errorMessage}</p>
+                </div>
+              ) : (
+                <div className="input__error__message__container false">
+                  <p>{errorMessage}</p>
+                </div>
+              )}
+            </div>
+
+            <div className="form__button__container">
+              <button type="submit" role="button" aria-label="Send form data">
+                Suscribe to monthly newsletter
+              </button>
+            </div>
+          </form>
+        </div>
+
+        {showSuccessfullyMessage ? (
+          <div className="form__message__general__container">
+            <div className="form__message__img__container">
+              <img src="/images/icon-success.svg" alt="Correct tick image" />
+            </div>
+
+            <h2>Thanks for subscribing!</h2>
+            <p>
+              A confirmation email has been sent to <b>{inputValue}</b>. Please
+              open it and click the button inside to confirm your subscription
+            </p>
+
+            <div className="form__message__close__btn__container">
+              <button onClick={() => setShowSuccessfullyMessage(false)}>
+                Dismiss message
+              </button>
+            </div>
+          </div>
+        ) : (
+          <div className="form__message__general__container false">
+            <div className="form__message__img__container">
+              <img src="/images/icon-success.svg" alt="Correct tick image" />
+            </div>
+
+            <h2>Thanks for subscribing!</h2>
+            <p>
+              A confirmation email has been sent to <b>{inputValue}</b>. Please
+              open it and click the button inside to confirm your subscription
+            </p>
+
+            <div className="form__message__close__btn__container">
+              <button onClick={() => setShowSuccessfullyMessage(false)}>
+                Dismiss message
+              </button>
+            </div>
+          </div>
+        )}
       </div>
 
-      <div className="card__content__container">
-        <h1>Stay updated!</h1>
-        <p>Join 60,000+ product managers receiving monthly updates on:</p>
-
-        <ul className="list__items__container">
-          <li>
-            <img src="/images/icon-list.svg" alt="Check icon" />
-            Product discovery and building what matters
-          </li>
-          <li>
-            <img src="/images/icon-list.svg" alt="" /> Measuring to ensure
-            updates are a success
-          </li>
-          <li>
-            <img src="/images/icon-list.svg" alt="" /> And much more!
-          </li>
-        </ul>
-
-        <form onSubmit={handleSubmit}>
-          <div className="form__input__container">
-            <label htmlFor="email">Email address</label>
-            <input
-              id="email"
-              type="email"
-              aria-required
-              placeholder="email@company.com"
-              value={inputValue}
-              onChange={handleInputValue}
-              ref={inputRef}
-              autoComplete="true"
-              style={{ borderColor: errorMessage && "var(--tomato)" }}
-            />
-
-            {errorMessage ? (
-              <div className="input__error__message__container">
-                <p>{errorMessage}</p>
-              </div>
-            ) : (
-              <div className="input__error__message__container false">
-                <p>{errorMessage}</p>
-              </div>
-            )}
-          </div>
-
-          <div className="form__button__container">
-            <button type="submit" role="button" aria-label="Send form data">
-              Suscribe to monthly newsletter
-            </button>
-          </div>
-        </form>
+      <div className="attribution">
+        <p>
+          Challenge by
+          <a
+            href="https://www.frontendmentor.io?ref=challenge"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Frontend Mentor
+          </a>
+          . <br />
+          Coded by <a href="#">Braian Adrian</a>.
+        </p>
       </div>
-
-      {showSuccessfullyMessage ? (
-        <div className="form__message__general__container">
-          <div className="form__message__img__container">
-            <img src="/images/icon-success.svg" alt="Correct tick image" />
-          </div>
-
-          <h2>Thanks for subscribing!</h2>
-          <p>
-            A confirmation email has been sent to <b>{inputValue}</b>. Please
-            open it and click the button inside to confirm your subscription
-          </p>
-
-          <div className="form__message__close__btn__container">
-            <button onClick={() => setShowSuccessfullyMessage(false)}>
-              Dismiss message
-            </button>
-          </div>
-        </div>
-      ) : (
-        <div className="form__message__general__container false">
-          <div className="form__message__img__container">
-            <img
-              src="../public/images/icon-success.svg"
-              alt="Correct tick image"
-            />
-          </div>
-
-          <h2>Thanks for subscribing!</h2>
-          <p>
-            A confirmation email has been sent to <b>{inputValue}</b>. Please
-            open it and click the button inside to confirm your subscription
-          </p>
-
-          <div className="form__message__close__btn__container">
-            <button onClick={() => setShowSuccessfullyMessage(false)}>
-              Dismiss message
-            </button>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
