@@ -140,6 +140,7 @@ function App() {
             href="https://www.frontendmentor.io?ref=challenge"
             target="_blank"
             rel="noreferrer"
+            aria-label="Link to Front Mentor challenges page"
           >
             Frontend Mentor
           </a>
@@ -149,6 +150,7 @@ function App() {
             href="https://www.linkedin.com/in/braian-adrian-gil-gagliardo-a10042266/"
             target="_blank"
             rel="noreferrer"
+            aria-label="Link to my profile in Linkedin platform"
           >
             Braian Adrian
           </a>
