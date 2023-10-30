@@ -38,7 +38,7 @@ function App() {
     setShowSuccessfullyMessage(false);
     const timer = setTimeout(() => {
       setInputValue("");
-    }, 2000);
+    }, 1500);
 
     return () => {
       clearTimeout(timer);
