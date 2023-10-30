@@ -15,7 +15,7 @@ function App() {
 
     const emailRegex = /^\S[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+\S$/;
 
-    if (inputRef.current && !inputValue.length) {
+    if (!inputRef.current && !inputValue.length) {
       setErrorMessage("Please enter a email direction");
     } else if (!emailRegex.test(inputValue)) {
       setErrorMessage("Enter a valid email direction");
@@ -27,8 +27,8 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!isValid || errorMessage || !inputRef.current)
-      setErrorMessage("Enter a email address");
+    if (!isValid || errorMessage || !inputRef.current || !inputValue)
+      setErrorMessage("Enter a valid email address");
     else {
       setShowSuccessfullyMessage(true);
     }
