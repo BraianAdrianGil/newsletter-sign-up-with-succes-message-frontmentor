@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./App.css";
 
 function App() {
@@ -31,8 +31,18 @@ function App() {
       setErrorMessage("Enter a email address");
     else {
       setShowSuccessfullyMessage(true);
-      setInputValue("");
     }
+  };
+
+  const handleCloseBtn = () => {
+    setShowSuccessfullyMessage(false);
+    const timer = setTimeout(() => {
+      setInputValue("");
+    }, 2000);
+
+    return () => {
+      clearTimeout(timer);
+    };
   };
 
   console.log(showSuccessfullyMessage);
@@ -108,9 +118,7 @@ function App() {
             </p>
 
             <div className="form__message__close__btn__container">
-              <button onClick={() => setShowSuccessfullyMessage(false)}>
-                Dismiss message
-              </button>
+              <button onClick={handleCloseBtn}>Dismiss message</button>
             </div>
           </div>
         ) : (
@@ -126,9 +134,7 @@ function App() {
             </p>
 
             <div className="form__message__close__btn__container">
-              <button onClick={() => setShowSuccessfullyMessage(false)}>
-                Dismiss message
-              </button>
+              <button onClick={handleCloseBtn}>Dismiss message</button>
             </div>
           </div>
         )}

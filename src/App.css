@@ -122,6 +122,7 @@ form {
   font-size: 12px;
   cursor: pointer;
   transition: 0.5s;
+  box-shadow: 4px 4px 12px black;
 }
 
 .form__button__container button:hover {
