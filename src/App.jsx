@@ -31,6 +31,7 @@ function App() {
       setErrorMessage("Enter a email address");
     else {
       setShowSuccessfullyMessage(true);
+      setInputValue("");
     }
   };
 
@@ -145,7 +146,7 @@ function App() {
             Frontend Mentor
           </a>
           . <br />
-          Coded by{" "}
+          Coded by
           <a
             href="https://www.linkedin.com/in/braian-adrian-gil-gagliardo-a10042266/"
             target="_blank"
