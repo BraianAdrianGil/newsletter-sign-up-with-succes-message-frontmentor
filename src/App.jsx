@@ -144,7 +144,11 @@ function App() {
             Frontend Mentor
           </a>
           . <br />
-          Coded by <a href="#">Braian Adrian</a>.
+          Coded by{" "}
+          <a href="https://www.linkedin.com/in/braian-adrian-gil-gagliardo-a10042266/">
+            Braian Adrian
+          </a>
+          .
         </p>
       </div>
     </div>
