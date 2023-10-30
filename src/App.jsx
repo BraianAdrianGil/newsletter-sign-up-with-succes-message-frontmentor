@@ -145,7 +145,11 @@ function App() {
           </a>
           . <br />
           Coded by{" "}
-          <a href="https://www.linkedin.com/in/braian-adrian-gil-gagliardo-a10042266/">
+          <a
+            href="https://www.linkedin.com/in/braian-adrian-gil-gagliardo-a10042266/"
+            target="_blank"
+            rel="noreferrer"
+          >
             Braian Adrian
           </a>
           .
