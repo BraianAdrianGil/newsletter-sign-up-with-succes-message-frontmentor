@@ -48,6 +48,7 @@ function App() {
     };
   };
 
+  // Animations =================================================
   const [ref, inView] = useInView({
     triggerOnce: false, // Detectar la entrada solo una vez
     threshold: 0, // Porcentaje del elemento visible para activar la animación
