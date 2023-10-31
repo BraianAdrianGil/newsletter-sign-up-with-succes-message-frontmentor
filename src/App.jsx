@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { animated } from "react-spring";
 import { useInView } from "react-intersection-observer";
 import "./App.css";
@@ -64,74 +64,164 @@ function App() {
     animationLabel,
   } = useAnimations(inView);
 
+  //  Minimum width for rendering animations
+  const [minimumWidth, setMinimumWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleWidth = () => {
+      setMinimumWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleWidth);
+
+    return () => {
+      window.removeEventListener("resize", handleWidth);
+    };
+  }, []);
+
   return (
     <div className="App">
       <div className="card" ref={ref}>
-        <animated.div className="card__img__container" style={animationImage}>
-          <img src="/images/illustration-sign-up-mobile.svg" alt="" />
-        </animated.div>
+        {minimumWidth >= 1024 ? (
+          <>
+            <animated.div
+              className="card__img__container"
+              style={animationImage}
+            >
+              <img src="/images/illustration-sign-up-mobile.svg" alt="" />
+            </animated.div>
 
-        <div className="card__content__container" ref={ref}>
-          <animated.h1 style={animationH1}>Stay updated!</animated.h1>
-          <animated.p style={animationP}>
-            Join 60,000+ product managers receiving monthly updates on:
-          </animated.p>
+            <div className="card__content__container" ref={ref}>
+              <animated.h1 style={animationH1}>Stay updated!</animated.h1>
+              <animated.p style={animationP}>
+                Join 60,000+ product managers receiving monthly updates on:
+              </animated.p>
 
-          <ul className="list__items__container" ref={ref}>
-            <animated.li style={animationItem}>
-              <img src="/images/icon-list.svg" alt="Check icon" />
-              Product discovery and building what matters
-            </animated.li>
-            <animated.li style={animationItem}>
-              <img src="/images/icon-list.svg" alt="" /> Measuring to ensure
-              updates are a success
-            </animated.li>
-            <animated.li style={animationItem}>
-              <img src="/images/icon-list.svg" alt="" /> And much more!
-            </animated.li>
-          </ul>
+              <ul className="list__items__container" ref={ref}>
+                <animated.li style={animationItem}>
+                  <img src="/images/icon-list.svg" alt="Check icon" />
+                  Product discovery and building what matters
+                </animated.li>
+                <animated.li style={animationItem}>
+                  <img src="/images/icon-list.svg" alt="" /> Measuring to ensure
+                  updates are a success
+                </animated.li>
+                <animated.li style={animationItem}>
+                  <img src="/images/icon-list.svg" alt="" /> And much more!
+                </animated.li>
+              </ul>
 
-          <form onSubmit={handleSubmit}>
-            <div className="form__input__container" ref={ref}>
-              <animated.label htmlFor="email" style={animationLabel}>
-                Email address
-              </animated.label>
-              <animated.input
-                id="email"
-                type="email"
-                aria-required
-                placeholder="email@company.com"
-                value={inputValue}
-                onChange={handleInputValue}
-                ref={inputRef}
-                autoComplete="true"
-                style={{
-                  ...animationContainerOne,
-                  borderColor: errorMessage && "var(--tomato)",
-                }}
-              />
+              <form onSubmit={handleSubmit}>
+                <div className="form__input__container" ref={ref}>
+                  <animated.label htmlFor="email" style={animationLabel}>
+                    Email address
+                  </animated.label>
+                  <animated.input
+                    id="email"
+                    type="email"
+                    aria-required
+                    placeholder="email@company.com"
+                    value={inputValue}
+                    onChange={handleInputValue}
+                    ref={inputRef}
+                    autoComplete="true"
+                    style={{
+                      ...animationContainerOne,
+                      borderColor: errorMessage && "var(--tomato)",
+                    }}
+                  />
 
-              {errorMessage ? (
-                <div className="input__error__message__container">
-                  <p>{errorMessage}</p>
+                  {errorMessage ? (
+                    <div className="input__error__message__container">
+                      <p>{errorMessage}</p>
+                    </div>
+                  ) : (
+                    <div className="input__error__message__container false">
+                      <p>{errorMessage}</p>
+                    </div>
+                  )}
                 </div>
-              ) : (
-                <div className="input__error__message__container false">
-                  <p>{errorMessage}</p>
-                </div>
-              )}
+
+                <animated.div
+                  className="form__button__container"
+                  style={animationContainerTwo}
+                >
+                  <button
+                    type="submit"
+                    role="button"
+                    aria-label="Send form data"
+                  >
+                    Suscribe to monthly newsletter
+                  </button>
+                </animated.div>
+              </form>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="card__img__container">
+              <img src="/images/illustration-sign-up-mobile.svg" alt="" />
             </div>
 
-            <animated.div
-              className="form__button__container"
-              style={animationContainerTwo}
-            >
-              <button type="submit" role="button" aria-label="Send form data">
-                Suscribe to monthly newsletter
-              </button>
-            </animated.div>
-          </form>
-        </div>
+            <div className="card__content__container">
+              <h1>Stay updated!</h1>
+              <p>Join 60,000+ product managers receiving monthly updates on:</p>
+
+              <ul className="list__items__container">
+                <li>
+                  <img src="/images/icon-list.svg" alt="Check icon" />
+                  Product discovery and building what matters
+                </li>
+                <li>
+                  <img src="/images/icon-list.svg" alt="" /> Measuring to ensure
+                  updates are a success
+                </li>
+                <li>
+                  <img src="/images/icon-list.svg" alt="" /> And much more!
+                </li>
+              </ul>
+
+              <form onSubmit={handleSubmit}>
+                <div className="form__input__container">
+                  <label htmlFor="email">Email address</label>
+                  <input
+                    id="email"
+                    type="email"
+                    aria-required
+                    placeholder="email@company.com"
+                    value={inputValue}
+                    onChange={handleInputValue}
+                    ref={inputRef}
+                    autoComplete="true"
+                    style={{
+                      borderColor: errorMessage && "var(--tomato)",
+                    }}
+                  />
+
+                  {errorMessage ? (
+                    <div className="input__error__message__container">
+                      <p>{errorMessage}</p>
+                    </div>
+                  ) : (
+                    <div className="input__error__message__container false">
+                      <p>{errorMessage}</p>
+                    </div>
+                  )}
+                </div>
+
+                <div className="form__button__container">
+                  <button
+                    type="submit"
+                    role="button"
+                    aria-label="Send form data"
+                  >
+                    Suscribe to monthly newsletter
+                  </button>
+                </div>
+              </form>
+            </div>
+          </>
+        )}
 
         {showSuccessfullyMessage ? (
           <div className="form__message__general__container">
