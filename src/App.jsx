@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { animated } from "react-spring";
 import { useInView } from "react-intersection-observer";
 import "./App.css";

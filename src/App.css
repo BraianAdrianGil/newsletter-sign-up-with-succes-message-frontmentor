@@ -28,6 +28,8 @@
 .card__img__container img {
   max-width: 100%;
   width: 100%;
+  min-width: 242px;
+  min-height: 320px;
   max-height: 284px;
   border-radius: 0 0 15px 15px;
   object-fit: cover;
@@ -259,7 +261,7 @@ form {
     background: var(--White);
     border-radius: 15px;
     max-width: 650px;
-    min-width: 594px;
+    min-width: 650px;
     min-height: 420px;
     height: 100%;
     gap: 1rem;
@@ -277,6 +279,7 @@ form {
     min-height: 400px;
     object-fit: cover;
     width: 100%;
+    min-width: 315px;
     border-radius: 15px;
   }
 
