@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from "react";
+import { animated, useSpring } from "react-spring";
+import { useInView } from "react-intersection-observer";
 import "./App.css";
 
 function App() {
@@ -45,36 +47,113 @@ function App() {
     };
   };
 
-  console.log(showSuccessfullyMessage);
+  const [ref, inView] = useInView({
+    triggerOnce: false, // Detectar la entrada solo una vez
+    threshold: 0, // Porcentaje del elemento visible para activar la animación
+  });
+
+  const animationImage = useSpring({
+    opacity: inView ? 1 : 0,
+    transform: inView ? "translateX(0)" : "translateX(100%)",
+    config: {
+      duration: 1000,
+      easing: (t) => t,
+    },
+  });
+
+  const animationH1 = useSpring({
+    opacity: inView ? 1 : 0,
+    transform: inView ? "translateY(0)" : "translateY(-100%)",
+    delay: inView ? 500 : 0,
+    config: {
+      duration: 1000,
+      easing: (t) => t,
+    },
+  });
+
+  const animationP = useSpring({
+    opacity: inView ? 1 : 0,
+    transform: inView ? "translateY(0)" : "translateY(-50%)",
+    delay: inView ? 800 : 0,
+    config: {
+      duration: 1000,
+      easing: (t) => t,
+    },
+  });
+
+  const animationItem = useSpring({
+    opacity: inView ? 1 : 0,
+    scale: inView ? "1" : "0.5",
+    delay: inView ? 1500 : 0,
+    config: {
+      duration: 1000,
+      easing: (t) => t,
+    },
+  });
+
+  const animationLabel = useSpring({
+    opacity: inView ? 1 : 0,
+    scale: inView ? "1" : "0.5",
+    delay: inView ? 2000 : 0,
+    config: {
+      duration: 1000,
+      easing: (t) => t,
+    },
+  });
+
+  const animationContainerOne = useSpring({
+    opacity: inView ? 1 : 0,
+    scale: inView ? "1" : "0.5",
+    delay: inView ? 2200 : 0,
+    config: {
+      duration: 1000,
+      easing: (t) => t,
+    },
+  });
+
+  const animationContainerTwo = useSpring({
+    opacity: inView ? 1 : 0,
+    scale: inView ? "1" : "0.5",
+    delay: inView ? 2400 : 0,
+    config: {
+      duration: 1000,
+      easing: (t) => t,
+    },
+  });
+
   return (
     <div className="App">
-      <div className="card">
-        <div className="card__img__container">
+      <div className="card" ref={ref}>
+        <animated.div className="card__img__container" style={animationImage}>
           <img src="/images/illustration-sign-up-mobile.svg" alt="" />
-        </div>
+        </animated.div>
 
-        <div className="card__content__container">
-          <h1>Stay updated!</h1>
-          <p>Join 60,000+ product managers receiving monthly updates on:</p>
+        <div className="card__content__container" ref={ref}>
+          <animated.h1 style={animationH1}>Stay updated!</animated.h1>
+          <animated.p style={animationP}>
+            Join 60,000+ product managers receiving monthly updates on:
+          </animated.p>
 
-          <ul className="list__items__container">
-            <li>
+          <ul className="list__items__container" ref={ref}>
+            <animated.li style={animationItem}>
               <img src="/images/icon-list.svg" alt="Check icon" />
               Product discovery and building what matters
-            </li>
-            <li>
+            </animated.li>
+            <animated.li style={animationItem}>
               <img src="/images/icon-list.svg" alt="" /> Measuring to ensure
               updates are a success
-            </li>
-            <li>
+            </animated.li>
+            <animated.li style={animationItem}>
               <img src="/images/icon-list.svg" alt="" /> And much more!
-            </li>
+            </animated.li>
           </ul>
 
           <form onSubmit={handleSubmit}>
-            <div className="form__input__container">
-              <label htmlFor="email">Email address</label>
-              <input
+            <div className="form__input__container" ref={ref}>
+              <animated.label htmlFor="email" style={animationLabel}>
+                Email address
+              </animated.label>
+              <animated.input
                 id="email"
                 type="email"
                 aria-required
@@ -83,7 +162,10 @@ function App() {
                 onChange={handleInputValue}
                 ref={inputRef}
                 autoComplete="true"
-                style={{ borderColor: errorMessage && "var(--tomato)" }}
+                style={{
+                  ...animationContainerOne,
+                  borderColor: errorMessage && "var(--tomato)",
+                }}
               />
 
               {errorMessage ? (
@@ -97,11 +179,14 @@ function App() {
               )}
             </div>
 
-            <div className="form__button__container">
+            <animated.div
+              className="form__button__container"
+              style={animationContainerTwo}
+            >
               <button type="submit" role="button" aria-label="Send form data">
                 Suscribe to monthly newsletter
               </button>
-            </div>
+            </animated.div>
           </form>
         </div>
 
