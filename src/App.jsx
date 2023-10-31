@@ -67,23 +67,11 @@ function App() {
   //  Minimum width for rendering animations
   const [minimumWidth, setMinimumWidth] = useState(window.innerWidth);
 
-  useEffect(() => {
-    const handleWidth = () => {
-      setMinimumWidth(window.innerWidth);
-    };
-
-    window.addEventListener("resize", handleWidth);
-
-    return () => {
-      window.removeEventListener("resize", handleWidth);
-    };
-  }, []);
-
   return (
     <div className="App">
-      <div className="card" ref={ref}>
-        {minimumWidth >= 1024 ? (
-          <>
+      {minimumWidth >= 1024 ? (
+        <div className="card" ref={ref}>
+          <div className="card" ref={ref}>
             <animated.div
               className="card__img__container"
               style={animationImage}
@@ -156,9 +144,47 @@ function App() {
                 </animated.div>
               </form>
             </div>
-          </>
-        ) : (
-          <>
+          </div>
+
+          {showSuccessfullyMessage ? (
+            <div className="form__message__general__container">
+              <div className="form__message__img__container">
+                <img src="/images/icon-success.svg" alt="Correct tick image" />
+              </div>
+
+              <h2>Thanks for subscribing!</h2>
+              <p>
+                A confirmation email has been sent to <b>{inputValue}</b>.
+                Please open it and click the button inside to confirm your
+                subscription
+              </p>
+
+              <div className="form__message__close__btn__container">
+                <button onClick={handleCloseBtn}>Dismiss message</button>
+              </div>
+            </div>
+          ) : (
+            <div className="form__message__general__container false">
+              <div className="form__message__img__container">
+                <img src="/images/icon-success.svg" alt="Correct tick image" />
+              </div>
+
+              <h2>Thanks for subscribing!</h2>
+              <p>
+                A confirmation email has been sent to <b>{inputValue}</b>.
+                Please open it and click the button inside to confirm your
+                subscription
+              </p>
+
+              <div className="form__message__close__btn__container">
+                <button onClick={handleCloseBtn}>Dismiss message</button>
+              </div>
+            </div>
+          )}
+        </div>
+      ) : (
+        <div className="card">
+          <div className="card">
             <div className="card__img__container">
               <img src="/images/illustration-sign-up-mobile.svg" alt="" />
             </div>
@@ -220,43 +246,45 @@ function App() {
                 </div>
               </form>
             </div>
-          </>
-        )}
-
-        {showSuccessfullyMessage ? (
-          <div className="form__message__general__container">
-            <div className="form__message__img__container">
-              <img src="/images/icon-success.svg" alt="Correct tick image" />
-            </div>
-
-            <h2>Thanks for subscribing!</h2>
-            <p>
-              A confirmation email has been sent to <b>{inputValue}</b>. Please
-              open it and click the button inside to confirm your subscription
-            </p>
-
-            <div className="form__message__close__btn__container">
-              <button onClick={handleCloseBtn}>Dismiss message</button>
-            </div>
           </div>
-        ) : (
-          <div className="form__message__general__container false">
-            <div className="form__message__img__container">
-              <img src="/images/icon-success.svg" alt="Correct tick image" />
-            </div>
 
-            <h2>Thanks for subscribing!</h2>
-            <p>
-              A confirmation email has been sent to <b>{inputValue}</b>. Please
-              open it and click the button inside to confirm your subscription
-            </p>
+          {showSuccessfullyMessage ? (
+            <div className="form__message__general__container">
+              <div className="form__message__img__container">
+                <img src="/images/icon-success.svg" alt="Correct tick image" />
+              </div>
 
-            <div className="form__message__close__btn__container">
-              <button onClick={handleCloseBtn}>Dismiss message</button>
+              <h2>Thanks for subscribing!</h2>
+              <p>
+                A confirmation email has been sent to <b>{inputValue}</b>.
+                Please open it and click the button inside to confirm your
+                subscription
+              </p>
+
+              <div className="form__message__close__btn__container">
+                <button onClick={handleCloseBtn}>Dismiss message</button>
+              </div>
             </div>
-          </div>
-        )}
-      </div>
+          ) : (
+            <div className="form__message__general__container false">
+              <div className="form__message__img__container">
+                <img src="/images/icon-success.svg" alt="Correct tick image" />
+              </div>
+
+              <h2>Thanks for subscribing!</h2>
+              <p>
+                A confirmation email has been sent to <b>{inputValue}</b>.
+                Please open it and click the button inside to confirm your
+                subscription
+              </p>
+
+              <div className="form__message__close__btn__container">
+                <button onClick={handleCloseBtn}>Dismiss message</button>
+              </div>
+            </div>
+          )}
+        </div>
+      )}
 
       <div className="attribution">
         <p>

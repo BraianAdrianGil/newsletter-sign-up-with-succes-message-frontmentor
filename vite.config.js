@@ -1,7 +1,17 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react-swc'
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react-swc";
+import ViteCompressionPlugin from "vite-plugin-compression";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
-})
+  plugins: [
+    react(),
+    ViteCompressionPlugin({
+      verbose: true,
+      disable: false,
+      threshold: 900 * 1024,
+      algorithm: "gzip",
+      ext: ".gz",
+    }),
+  ],
+});
