@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { animated, useSpring } from "react-spring";
 import { useInView } from "react-intersection-observer";
 import "./App.css";
@@ -64,7 +64,7 @@ function App() {
   const animationH1 = useSpring({
     opacity: inView ? 1 : 0,
     transform: inView ? "translateY(0)" : "translateY(-100%)",
-    delay: inView ? 500 : 0,
+    delay: inView ? 700 : 0,
     config: {
       duration: 1000,
       easing: (t) => t,
@@ -74,7 +74,7 @@ function App() {
   const animationP = useSpring({
     opacity: inView ? 1 : 0,
     transform: inView ? "translateY(0)" : "translateY(-50%)",
-    delay: inView ? 800 : 0,
+    delay: inView ? 900 : 0,
     config: {
       duration: 1000,
       easing: (t) => t,
@@ -84,7 +84,7 @@ function App() {
   const animationItem = useSpring({
     opacity: inView ? 1 : 0,
     scale: inView ? "1" : "0.5",
-    delay: inView ? 1500 : 0,
+    delay: inView ? 1250 : 0,
     config: {
       duration: 1000,
       easing: (t) => t,
@@ -94,7 +94,7 @@ function App() {
   const animationLabel = useSpring({
     opacity: inView ? 1 : 0,
     scale: inView ? "1" : "0.5",
-    delay: inView ? 2000 : 0,
+    delay: inView ? 1700 : 0,
     config: {
       duration: 1000,
       easing: (t) => t,
@@ -104,7 +104,7 @@ function App() {
   const animationContainerOne = useSpring({
     opacity: inView ? 1 : 0,
     scale: inView ? "1" : "0.5",
-    delay: inView ? 2200 : 0,
+    delay: inView ? 2000 : 0,
     config: {
       duration: 1000,
       easing: (t) => t,
