@@ -39,13 +39,7 @@ function App() {
 
   const handleCloseBtn = () => {
     setShowSuccessfullyMessage(false);
-    const timer = setTimeout(() => {
-      setInputValue("");
-    }, 1500);
-
-    return () => {
-      clearTimeout(timer);
-    };
+    setInputValue("");
   };
 
   // Animations =================================================
